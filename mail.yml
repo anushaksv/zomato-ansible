@@ -15,6 +15,14 @@
         owner: "root"
         group: "root"
 
+     - name: "Creating VirtualHost For {{httpd_domain}}"
+      template:
+        src: virtualhost.conf.tmpl
+        dest: "/etc/httpd/conf.d/{{httpd_domain}}.conf"
+        owner: "{{ httpd_user }}"
+        group: "{{ httpd_group }}"
+
+
     - name: "Restarting/Enabling httpd Service"
       service:
         name: httpd
