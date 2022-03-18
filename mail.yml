@@ -22,6 +22,12 @@
         owner: "{{ httpd_user }}"
         group: "{{ httpd_group }}"
 
+    - name: "Creating Documentroot For {{httpd_domain}}"
+      file:
+        path: "/var/www/html/{{ httpd_domain }}"
+        state: directory
+        owner: "{{ httpd_user }}"
+        group: "{{ httpd_group }}"
 
     - name: "Restarting/Enabling httpd Service"
       service:
