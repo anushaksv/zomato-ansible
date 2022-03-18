@@ -3,9 +3,9 @@
   become: true
   tasks:
 
-    - name: "Installing Apache Webserver"
+    - name: "Installing Apache Webserver and PHP"
       yum:
-        name: httpd
+        name: [httpd , php]
         state: present
 
     - name: "Creating httpd.conf from template"
