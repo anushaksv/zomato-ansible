@@ -3,15 +3,22 @@
   become: true
   tasks:
 
-    - name: "Installing Apache Webserver"
+    - name: "Installing Apache Webserver and PHP"
       yum:
-        name: httpd
+        name: [httpd , php]
         state: present
 
     - name: "Creating httpd.conf from template"
       template:
         src: "httpd.conf.tmpl"
         dest: "/etc/httpd/conf/httpd.conf"
+        owner: "root"
+        group: "root"
+
+    - name: "Creating php.ini from template"
+      template:
+        src: "php.ini.templ"
+        dest: "/etc/php.ini.templ"
         owner: "root"
         group: "root"
 
