@@ -8,6 +8,13 @@
         name: httpd
         state: present
 
+    - name: "Creating httpd.conf from template"
+      template:
+        src: "httpd.conf.tmpl"
+        dest: "/etc/httpd/conf/httpd.conf"
+        owner: "root"
+        group: "root"
+
     - name: "Restarting/Enabling httpd Service"
       service:
         name: httpd
